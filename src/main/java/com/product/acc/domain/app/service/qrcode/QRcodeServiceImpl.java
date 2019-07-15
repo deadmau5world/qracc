@@ -9,6 +9,8 @@ import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.product.acc.domain.app.model.QrRequestBean;
 import com.product.acc.domain.app.model.ResultQR;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayOutputStream;
@@ -40,12 +42,11 @@ class QRcodeServiceImpl implements QRcodeService {
     /**
      * QRコード出力ストリーム設定定義
      */
+    @AllArgsConstructor
+    @Getter
     private enum SettingStreamQR {
         PNG("png");     // PNG
         private String value;
-        private SettingStreamQR(String value) {
-            this.value = value;
-        }
     }
 
     @Override

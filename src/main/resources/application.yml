@@ -1,7 +1,14 @@
 spring:
   datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
     url: ${vcap.services.my-user-provided-service.credentials.url}
     username: ${vcap.services.my-user-provided-service.credentials.user}
     password: ${vcap.services.my-user-provided-service.credentials.password}
-    driverClassName: com.mysql.jdbc.Driver
-  logging.level.root: DEBUG
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      maximum-pool-size: 20
+      minimum-pool-size: 2
+      minimum-idle: 10
+    logging:
+      level:
+        root: TRACE
